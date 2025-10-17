@@ -102,7 +102,7 @@ case 30: goto __coroutine_yield_30;
 
 __skip_coroutine_jump:
 _co->done = 1;
-_co->i += 1;
+_co->i = _COROUTINE_COUNTER + 1;
 }
 
 #undef _COROUTINE_COUNTER
