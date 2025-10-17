@@ -8,7 +8,7 @@ makes Co stackless (read: no stack frame), meaning that
 all local variables must be put in a context struct, and
 coroutines can't be yielded from subfunctions. In the
 former case, we provide syntax sugar to hopefully make
-things less painful. This is useful
+things less painful.
 
 Unlike other stackless coroutine libraries, Co does not
 use any tricks with switch statements. This means that Co
