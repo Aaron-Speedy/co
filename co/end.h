@@ -106,3 +106,5 @@ _co->i = _COROUTINE_COUNTER + 1;
 }
 
 #undef _COROUTINE_COUNTER
+#undef CO_CNTX
+#undef CO_ARGS

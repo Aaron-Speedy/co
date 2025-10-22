@@ -14,16 +14,16 @@
 #include "co/end.h"
 
 #define CO_NAME merry_christmas
-#define CO_CONTEXT int i;
-#define CO_ARGS int n; char *name;
+#define CO_CNTX var(int, i)
+#define CO_ARGS var(int, n) var(char *, name)
 #include "co/begin.h"
-    for (ctx->i = 0; ctx->i < args->n; ctx->i++) {
-        printf("\"Merry Christmas, %s!\"", args->name);
+    for (i = 0; i < n; i++) {
+        printf("\"Merry Christmas, %s!\"", name);
         #include "co/yield.h"
     }
 #include "co/end.h"
 
-int main() {
+int main(void) {
     /* This library does no memory management, and it has no constructors.
        Of course, if you want, you can write wrappers to do those things. */
 
@@ -46,7 +46,7 @@ int main() {
 
         if (!hello.done) { done = 0; co_resume(&hello); }
         else {
-            merry_args.name = "Batman"; /* hmmmmmmmmmmmm */
+            // merry_args.name = "Batman"; /* hmmmmmmmmmmmm */
             printf("\n");
         }
         if (!merry.done) { done = 0; co_resume(&merry); }

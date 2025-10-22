@@ -95,10 +95,27 @@
 #error "No more than 30 yield slots are enabled. To enable more, add more conditions to co/yield.h and co/end.h"
 #endif
 
+#define var(T, name) ctx->name = name;
+CO_CNTX
+#undef var
+
+#define var(T, name) args->name = name;
+CO_ARGS
+#undef var
+
 _co->i = _COROUTINE_COUNTER;
 return;
+
 _COROUTINE_CONCAT_2(__coroutine_yield_, _COROUTINE_COUNTER):
 (void) _co;
+
+#define var(T, name) name = ctx->name;
+CO_CNTX
+#undef var
+
+#define var(T, name) name = args->name;
+CO_ARGS
+#undef var
 
 #undef _COROUTINE_CONCAT_1
 #undef _COROUTINE_CONCAT_2
